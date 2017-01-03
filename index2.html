@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div id="test"></div>
+</div>
+<script>
+
+  var test = document.getElementById("test");
+  (function () {
+    debugger;
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "http://adserver.adtech.de/addyn|3.0|327|4218234|0|457|ADTECH;loc=100;target=_blank;sub1=[subst];grp=' + window.adgroupid + ';misc=' + new Date().getTime() + ';kvenv={{kvenv}};kvlang={{kvlang}};KVabbr=' + window.adtechCCvals + '";
+    test.appendChild(script);
+    (function() {
+      var document = {};
+      document.write = function (arg) {
+        console.debug(arg);
+      };
+    })();
+
+  })();
+</script>
+</body>
+</html>
+
+
+
