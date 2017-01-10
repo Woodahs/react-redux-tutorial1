@@ -13,14 +13,12 @@ render();
 store.subscribe(render);
 
 document.getElementById('decrement').addEventListener('click', function () {
-    var action = {type: 'DECREMENT'}; // Note 2.1
-    store.dispatch(action);
+    store.dispatch(decrease());
 });
 
 document.getElementById('increment').addEventListener('click', function () {
-    setTimeout(function increment() {
-        var action = {type: 'INCREMENT'};
-        store.dispatch(action);
+    setTimeout(function() {
+        store.dispatch(increase());
     }, 1000);
 });
 
