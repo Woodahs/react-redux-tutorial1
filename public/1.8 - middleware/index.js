@@ -2,12 +2,30 @@
 const logger = function (store) {
   return function (next) {
     return function (action) {
+      console.log("start");
       next(action);
+      console.log("end");
     }
   }
 };
 
-var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger));
+// second middleware
+const crashReporter = function (store) {
+  return function (next) {
+    return function (action) {
+      try {
+        next(action);
+      } catch(err) {
+        console.group('crashReporter');
+        console.log('error happen with action: ', action);
+        console.error(err);
+        console.group('crashReporter');
+      }
+    }
+  }
+};
+
+var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, crashReporter));
 
 var valueE1 = document.getElementById('value');
 var valueSum = document.getElementById('sum');
