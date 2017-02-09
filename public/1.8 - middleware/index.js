@@ -1,38 +1,13 @@
-// middleware
-const logger = function (store) {
-  return function (next) {
-    return function (action) {
-      console.log("start");
-      next(action);
-      console.log("end");
-    }
-  }
-};
-
-// second middleware
-const crashReporter = function (store) {
-  return function (next) {
-    return function (action) {
-      try {
-        next(action);
-      } catch(err) {
-        console.group('crashReporter');
-        console.log('error happen with action: ', action);
-        console.error(err);
-        console.group('crashReporter');
-      }
-    }
-  }
-};
-
-var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, crashReporter));
+var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, crashReporter, thunk));
 
 var valueE1 = document.getElementById('value');
 var valueSum = document.getElementById('sum');
+var countStatus = document.getElementById('js-countStatus');
 
 function render() {
   var state = store.getState();
-  valueE1.innerHTML = state.count;
+  valueE1.innerHTML = state.count.result;
+  countStatus.innerHTML = state.count.loading ? "Is loading..." : "Is loaded";
   valueSum.value = state.sum;
 }
 render();
@@ -44,9 +19,7 @@ document.getElementById('decrement').addEventListener('click', function () {
 });
 
 document.getElementById('increment').addEventListener('click', function () {
-  setTimeout(function () {
-    store.dispatch(increase());
-  }, 1000);
+  store.dispatch(asyncIncrease);
 });
 
 document.getElementById('add').addEventListener('click', function () {
