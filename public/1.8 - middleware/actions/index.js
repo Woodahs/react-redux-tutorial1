@@ -13,7 +13,15 @@ var getSum = function (a, b) {
 var asyncIncrease = function (dispatch, state) {
   dispatch({type: "INCREMENT_LOADING"});
   _fakeServerApi.increaseCount(state.count.result,
-    function (data) {
+    function () {
       dispatch({type: 'INCREMENT'})
     });
+};
+
+var getRandomImages = function (dispatch, state) {
+  var imgurAPI = "https://api.imgur.com/3/gallery/random/random/1";
+  dispatch({type: "IMGUR_LOADING"});
+  $.getJSON(imgurAPI).done(function (data) {
+    dispatch({type: 'SHOW_IMGUR_IMAGES', data: data.data})
+  })
 };
