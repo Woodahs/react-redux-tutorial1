@@ -5,11 +5,12 @@ import RandomImages from './RandomImages';
 
 export default class Examples extends Component {
   render() {
+    const {value: {count, sum, images}, onDecrement, onRandomImages, onSum} = this.props;
     return (
       <div>
-        <Counter count={this.props.value.count} onDecrement={this.props.onDecrement}/>
-        <Sum sum={this.props.value.sum} onSum={this.props.onSum}/>
-        <RandomImages images={this.props.value.images} onRandomImages={this.props.onRandomImages}/>
+        <Counter count={count} onDecrement={onDecrement}/>
+        <Sum sum={sum} onSum={onSum}/>
+        <RandomImages images={images} onRandomImages={onRandomImages}/>
       </div>
     )
   }

@@ -3,7 +3,7 @@ import sum from './sum';
 import images from './images';
 
 export default function combineReducer(currentState, action) { //REDUCER
-  let nextState = Object.assign({}, currentState);
+  let nextState = {...currentState};
 
   nextState = {
     count: counter(nextState.count, action),

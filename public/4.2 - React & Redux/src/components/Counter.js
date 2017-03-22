@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 
 export default class Counter extends Component {
   render() {
+    const {count:{result}, onDecrement} = this.props;
     return (
       <div>
-        Clicked: <span>{this.props.count.result}</span> times
-        <button onClick={this.props.onDecrement}>-</button>
+        Clicked: <span>{result}</span> times
+        <button onClick={onDecrement}>-</button>
       </div>
     )
   }

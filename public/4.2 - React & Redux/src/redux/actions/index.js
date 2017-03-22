@@ -3,7 +3,7 @@ import $ from 'jquery';
 export const decrease = () => ({type: 'DECREMENT'});
 
 export const getSum = (a, b) => ({
-  type: 'SUM', a: a, b: b
+  type: 'SUM', a, b
 });
 
 export const getRandomImages = (dispatch, state) => {

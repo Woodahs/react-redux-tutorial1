@@ -1,14 +1,16 @@
 export default function images(state = {data: [], loading: 'Click "Random Images" button'}, action) {
   switch (action.type) {
     case 'SHOW_IMGUR_IMAGES':
-      return Object.assign({}, state, {
+      return {
+        ...state,
         data: action.data,
         loading: "Is loaded"
-      });
+      };
     case 'IMGUR_LOADING':
-      return Object.assign({}, state, {
+      return {
+        ...state,
         loading: "Is loading..."
-      });
+      };
     default:
       return state;
   }

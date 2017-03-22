@@ -1,4 +1,4 @@
-export default function sum (currentState = 0, action) {
+export default function sum (currentState = 3, action) {
   let nextState;
 
   switch (action.type) {

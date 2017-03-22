@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "enzyme": "^2.4.1",
     "jquery": "^3.2.1",
     "react-addons-test-utils": "^15.3.0",

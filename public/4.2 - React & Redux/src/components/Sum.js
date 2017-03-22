@@ -8,24 +8,24 @@ export default class Sum extends Component {
       b: 2
     };
   }
-
   render() {
+    const {props: {sum, onSum}, state: {a, b}} = this;
     return (
       <div>
         <label>
           a:
-          <input onChange={(e) => {this.setState({a: +e.target.value})}} value={this.state.a} type="text"/>
+          <input onChange={(e) => {this.setState({a: +e.target.value})}} value={a} type="text"/>
         </label>
         <label>
           b:
-          <input onChange={(e) => {this.setState({b: +e.target.value})}} value={this.state.b} type="text"/>
+          <input onChange={(e) => {this.setState({b: +e.target.value})}} value={b} type="text"/>
         </label>
         <label>
           sum:
-          <input readOnly="readOnly" value={this.props.sum} type="text"/>
+          <input readOnly="readOnly" value={sum} type="text"/>
         </label>
         <button onClick={() => {
-          this.props.onSum(this.state.a, this.state.b)
+          onSum(a, b)
         }}>add</button>
       </div>
     )
